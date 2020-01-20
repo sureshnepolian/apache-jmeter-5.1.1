@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Walls" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Transaction Controller" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="OrderCreation" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+&lt;Order xmlns=&quot;http://www.sterlingcommerce.com/documentation&quot; DocumentType=&quot;0001&quot; DraftOrderFlag=&quot;N&quot; EnterpriseCode=&quot;WM_GM&quot; EntryType=&quot;WEB&quot; OrderDate=&quot;2019-08-01T01:01:01&quot; OrderNo=&quot;${__Random(123456789101112,999999999999999,)}&quot; OrderType=&quot;ECOMM&quot; SellerOrganizationCode=&quot;WM_GM&quot;&gt;&#xd;
+    &lt;OrderLines&gt;&#xd;
+        &lt;OrderLine DeliveryMethod=&quot;SHP&quot; DepartmentCode=&quot;cat180816&quot; IsFirmPredefinedNode=&quot;Y&quot; IsProcurementAllowed=&quot;N&quot; KitCode=&quot;&quot; OrderedQty=&quot;1.00&quot; PrimeLineNo=&quot;1&quot; ShipNode=&quot;10000000459&quot;&gt;&#xd;
+            &lt;Item ItemID=&quot;7L1LNHPDCGL5EFBH93RWG35YGN70UF52&quot; ProductClass=&quot;Good&quot; UnitOfMeasure=&quot;EACH&quot; /&gt;&#xd;
+            &lt;LinePriceInfo IsPriceLocked=&quot;Y&quot; UnitPrice=&quot;7199.00&quot; /&gt;&#xd;
+            &lt;LineCharges&gt;&#xd;
+                &lt;LineCharge ChargeCategory=&quot;Discount&quot; ChargeName=&quot;COUPON_DISC&quot; ChargePerLine=&quot;35.00&quot; /&gt;&#xd;
+            &lt;/LineCharges&gt;&#xd;
+            &lt;LineTaxes&gt;&#xd;
+                &lt;LineTax ChargeCategory=&quot;Price&quot; ChargeName=&quot;IVA_TAX&quot; Tax=&quot;992.97&quot; TaxName=&quot;IVA_TAX&quot; TaxPercentage=&quot;16.00&quot; /&gt;&#xd;
+                &lt;LineTax ChargeCategory=&quot;Price&quot; ChargeName=&quot;IEPS_TAX&quot; Tax=&quot;0.00&quot; TaxName=&quot;IEPS_TAX&quot; TaxPercentage=&quot;0.00&quot; /&gt;&#xd;
+                &lt;LineTax ChargeCategory=&quot;Price&quot; ChargeName=&quot;STATE_TAX&quot; Tax=&quot;0.00&quot; TaxName=&quot;STATE_TAX&quot; TaxPercentage=&quot;0.00&quot; /&gt;&#xd;
+            &lt;/LineTaxes&gt;&#xd;
+            &lt;Extn ExtnBulkBundle=&quot;N&quot; ExtnItemCategory=&quot;GM&quot; ExtnPaymentRef=&quot;trplhkfdt6glufay6vrw&quot;&gt;&#xd;
+                &lt;ExtnShipmentBoxList&gt;&#xd;
+                    &lt;ExtnShipmentBox ExtnBoxHeight=&quot;17.00&quot; ExtnBoxHeightUOM=&quot;cm&quot; ExtnBoxLength=&quot;25.00&quot; ExtnBoxLengthUOM=&quot;cm&quot; ExtnBoxNo=&quot;100300947&quot; ExtnBoxQty=&quot;1.00&quot; ExtnBoxWeight=&quot;1.00&quot; ExtnBoxWeightUOM=&quot;kg&quot; ExtnBoxWidth=&quot;15.00&quot; ExtnBoxWidthUOM=&quot;cm&quot; ExtnCarrierID=&quot;7999011&quot; ExtnCarrierServiceCode=&quot;FDSA&quot; ExtnSCAC=&quot;MX-FEDX&quot;&gt;&#xd;
+                        &lt;LineCharges&gt;&#xd;
+                            &lt;LineCharge ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;SHIPPING_CH&quot; ChargePerLine=&quot;0.00&quot; /&gt;&#xd;
+                            &lt;LineCharge ChargeCategory=&quot;Discount&quot; ChargeName=&quot;SHIP_DISC&quot; ChargePerLine=&quot;0.00&quot; /&gt;&#xd;
+                        &lt;/LineCharges&gt;&#xd;
+                        &lt;LineTaxes&gt;&#xd;
+                            &lt;LineTax ChargeCategory=&quot;Shipping&quot; ChargeName=&quot;SHIPPING_CH&quot; Tax=&quot;0.00&quot; TaxName=&quot;SHIP_IVA_TAX&quot; TaxPercentage=&quot;16.00&quot; /&gt;&#xd;
+                        &lt;/LineTaxes&gt;&#xd;
+                    &lt;/ExtnShipmentBox&gt;&#xd;
+                &lt;/ExtnShipmentBoxList&gt;&#xd;
+            &lt;/Extn&gt;&#xd;
+            &lt;PersonInfoShipTo AddressLine1=&quot;dSAaaaf&quot; AddressLine2=&quot;aafaFa|aAfAFF&quot; AddressLine3=&quot;LIBERTAD&quot; AddressLine4=&quot;Azcapotzalco&quot; City=&quot;Ciudad de M�xico&quot; Country=&quot;MX&quot; DayPhone=&quot;1234567890&quot; EMailID=&quot;nitishcoool@gmail.com&quot; EveningPhone=&quot;&quot; FirstName=&quot;nitish&quot; LastName=&quot;mohan&quot; State=&quot;Distrito Federal&quot; ZipCode=&quot;02050&quot; /&gt;&#xd;
+            &lt;OrderLineReservations&gt;&#xd;
+                &lt;OrderLineReservation DemandType=&quot;RESERVED&quot; ItemID=&quot;7L1LNHPDCGL5EFBH93RWG35YGN70UF52&quot; Node=&quot;10000000459&quot; ProductClass=&quot;Good&quot; Quantity=&quot;1.00&quot; ReservationID=&quot;${__Random(123456789101112,999999999999999,)}&quot; UnitOfMeasure=&quot;EACH&quot; /&gt;&#xd;
+            &lt;/OrderLineReservations&gt;&#xd;
+        &lt;/OrderLine&gt;&#xd;
+    &lt;/OrderLines&gt;&#xd;
+    &lt;PriceInfo Currency=&quot;MXN&quot; /&gt;&#xd;
+    &lt;PersonInfoBillTo AddressLine1=&quot;saffsafsafa&quot; AddressLine2=&quot;fasfsafa|sfasfsaf&quot; AddressLine3=&quot;LIBERTAD&quot; AddressLine4=&quot;Azcapotzalco&quot; City=&quot;Ciudad de M�xico&quot; Country=&quot;MEXICO&quot; EMailID=&quot;nitishcoool@gmail.com&quot; State=&quot;Distrito Federal&quot; ZipCode=&quot;02050&quot; /&gt;&#xd;
+    &lt;PersonInfoShipTo AddressLine1=&quot;dSAaaaf&quot; AddressLine2=&quot;aafaFa|aAfAFF&quot; AddressLine3=&quot;LIBERTAD&quot; AddressLine4=&quot;Azcapotzalco&quot; City=&quot;Ciudad de M�xico&quot; Country=&quot;MX&quot; DayPhone=&quot;1234567890&quot; EMailID=&quot;nitishcoool@gmail.com&quot; EveningPhone=&quot;&quot; FirstName=&quot;nitish&quot; LastName=&quot;mohan&quot; State=&quot;Distrito Federal&quot; ZipCode=&quot;02050&quot; /&gt;&#xd;
+    &lt;AdditionalAddresses&gt;&#xd;
+        &lt;AdditionalAddress AddressType=&quot;INVOICE&quot;&gt;&#xd;
+            &lt;PersonInfo AddressID=&quot;DEFAULT&quot; AddressLine1=&quot;dSAaaaf&quot; AddressLine2=&quot;aafaFa|aAfAFF&quot; AddressLine3=&quot;LIBERTAD&quot; AddressLine4=&quot;Azcapotzalco&quot; City=&quot;Ciudad de M�xico&quot; Country=&quot;MX&quot; DayPhone=&quot;1234567890&quot; EMailID=&quot;nitishcoool@gmail.com&quot; EveningPhone=&quot;&quot; FirstName=&quot;nitish&quot; LastName=&quot;mohan&quot; State=&quot;Distrito Federal&quot; ZipCode=&quot;02050&quot; /&gt;&#xd;
+        &lt;/AdditionalAddress&gt;&#xd;
+    &lt;/AdditionalAddresses&gt;&#xd;
+    &lt;PaymentMethods&gt;&#xd;
+        &lt;PaymentMethod CreditCardExpDate=&quot;11-27&quot; CreditCardNo=&quot;424242XXXXXX4242&quot; CreditCardType=&quot;VISA&quot; FirstName=&quot;Sindhucard&quot; LastName=&quot;Sindhucard&quot; PaymentReference2=&quot;NMSI&quot; PaymentType=&quot;CREDIT&quot;&gt;&#xd;
+            &lt;PaymentDetails AuthTime=&quot;2019-08-01T01:01:01&quot; AuthorizationID=&quot;trplhkfdt6glufay6vrw&quot; ChargeType=&quot;CHARGE&quot; ProcessedAmount=&quot;7164.00&quot; RequestAmount=&quot;7164.00&quot; RequestId=&quot;&quot; TranReturnCode=&quot;completed&quot; TranReturnMessage=&quot;completed&quot; TranType=&quot;SETTLEMENT&quot; /&gt;&#xd;
+        &lt;/PaymentMethod&gt;&#xd;
+    &lt;/PaymentMethods&gt;&#xd;
+    &lt;Extn ExtnCFDI=&quot;G01&quot; ExtnNationalRFC=&quot;XAXX010101000&quot; ExtnPayAtStore=&quot;N&quot; ExtnPaymentStatus=&quot;ACCEPT&quot; /&gt;&#xd;
+&lt;/Order&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">www.google.com</stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">/images</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">300</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
